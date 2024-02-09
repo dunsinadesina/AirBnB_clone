@@ -45,7 +45,7 @@ class HBNBCommand(cmd.Cmd):
     def default(self, arg):
         """Default behavior when input is invalid"""
         commandMapping = {
-            "all": self.do_all, "create": self.do_create, "update": self.do_update, "show": self.do_show, "count": self.do_count, "destroy": self.do_destroy
+            "all": self._all, "create": self._create, "update": self._update, "show": self._show, "count": self._count, "destroy": self._destroy
         }
         mapMatching = re.search(r"\.", arg)
         if mapMatching is not None:
@@ -59,16 +59,16 @@ class HBNBCommand(cmd.Cmd):
         print("*** Invalid Syntax: {}. Try again.".format(arg))
         return False
     
-    def do_EOF(self, arg):
+    def _EOF(self, arg):
         """End Of File(EOF) signal"""
         print("")
         return True
    
-    def do_quit(self, arg):
+    def _quit(self, arg):
         """Quit command"""
         return True
     
-    def do_create(self, arg):
+    def _create(self, arg):
         """ Creates a new instance of BaseModel, saves it (to the JSON file) and prints the id"""
         argList = parse(arg)
         if len(argList) == 0:
@@ -79,7 +79,7 @@ class HBNBCommand(cmd.Cmd):
             print(eval(argList[0])().id)
             FileStorage.save()
 
-    def do_all(self, arg):
+    def _all(self, arg):
         """Prints all string representation of all instances based or not on the class name"""
 
         argList = parse(arg)
@@ -93,7 +93,7 @@ class HBNBCommand(cmd.Cmd):
                 elif len(argList) == 0:
                     objectList.append(obj.__str__())
             print(objectList)
-    def do_update(self, arg):
+    def _update(self, arg):
         """Updates an instance based on the class name and id by adding or updating attribute (save the change into the JSON file)"""
         argList = parse(arg)
         objectDict = FileStorage.all()
@@ -134,7 +134,7 @@ class HBNBCommand(cmd.Cmd):
                 else:
                     obj.__dict__[key] = value
         FileStorage.save()
-    def do_show(self, arg):
+    def _show(self, arg):
         """Prints the string representation of an instance based on the class name and id"""
         argList = parse(arg)
         objectDict = FileStorage.all()
@@ -148,7 +148,7 @@ class HBNBCommand(cmd.Cmd):
             print("No instance is found")
         else:
             print(objectDict["{}.{}".format(argList[0], argList[1])])
-    def do_count(self, arg):
+    def _count(self, arg):
         """Get the number of instances of a class"""
         argList = parse(arg)
         counter = 0
@@ -156,7 +156,7 @@ class HBNBCommand(cmd.Cmd):
             if argList[0] == obj.__class__.__name__:
                 counter += 1
         print(counter)
-    def do_destroy(self, arg):
+    def _destroy(self, arg):
         """Deletes an instance based on the class name and id (save the change into the JSON file)"""
         argList = parse(arg)
         objectDict = FileStorage.all()
