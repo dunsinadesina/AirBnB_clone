@@ -5,5 +5,10 @@ from models.base_model import BaseModel
 
 
 class Amenity(BaseModel):
+    """Amenity cls.
+
+    Attributes:
+        name (str): amenity name.
+    """
     
     name = ""

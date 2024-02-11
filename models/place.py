@@ -5,6 +5,21 @@ from models.base_model import BaseModel
 
 
 class Place(BaseModel):
+     """Place class.
+
+    Attributes:
+        city_id (str): id of city.
+        user_id (str): identification of user.
+        name (str): place name.
+        description (str): place description.
+        number_rooms (int): amount of rooms in the place.
+        number_bathrooms (int): amount of bathrooms in the place.
+        max_guest (int): max number of quests.
+        price_by_night (int): price for booking per night.
+        latitude (float): place lattitude.
+        longitude (float): place longitude.
+        amenity_ids (list): amenity ids.
+     """
     
     user_id = ""
     name = ""
