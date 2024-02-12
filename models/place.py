@@ -1,11 +1,10 @@
-place.py
 #!/usr/bin/python3
 """Definition child class place"""
 from models.base_model import BaseModel
 
 
 class Place(BaseModel):
-     """Place class.
+    """Place class.
 
     Attributes:
         city_id (str): id of city.
@@ -20,7 +19,8 @@ class Place(BaseModel):
         longitude (float): place longitude.
         amenity_ids (list): amenity ids.
      """
-    
+
+    city_id = ""
     user_id = ""
     name = ""
     description = ""

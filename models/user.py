@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""This program contains definatipon of user class and inherits from basemodel"""
+"""This program contains defintion of user class and inherits from basemodel"""
 from models.base_model import BaseModel
 
 

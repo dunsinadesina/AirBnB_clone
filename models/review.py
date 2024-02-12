@@ -1,4 +1,3 @@
-review.py
 #!/usr/bin/python3
 """Definition of child class Review"""
 from models.base_model import BaseModel
